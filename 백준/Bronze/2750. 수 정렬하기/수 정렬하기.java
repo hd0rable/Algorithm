@@ -4,14 +4,16 @@ import java.io.InputStreamReader;
 
 public class Main {
     public static void main(String[] args) throws IOException {
-        // BufferedReader + 선택정렬
+        // BufferedReader + 선택정렬 + StringBuilder
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+
+        StringBuilder sb = new StringBuilder();
 
        // 줄 수 입력
        int length = Integer.parseInt(br.readLine());
 
         // 정수 해당 줄만큼 입력
-       int [] list = new int [length];
+        int [] list = new int [length];
        for (int i = 0; i < length; i++){
            list[i] = Integer.parseInt(br.readLine());
        }
@@ -26,9 +28,11 @@ public class Main {
                }
            }
        }
+
        // 출력
         for(int val : list){
-            System.out.println(val);
+           sb.append(val).append("\n");
         }
+        System.out.println(sb);
     }
 }
