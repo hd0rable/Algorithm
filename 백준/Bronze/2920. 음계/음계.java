@@ -1,23 +1,30 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.Arrays;
 
 public class Main {
     public static void main(String[] args) throws IOException {
 
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
-        String[] ascendingArr = "1 2 3 4 5 6 7 8".split(" ");
-        String[] descendingArr = "8 7 6 5 4 3 2 1".split(" ");
-
-        String[] strArr = br.readLine().split(" ");
-        if(Arrays.equals(strArr, ascendingArr)){
-            System.out.println("ascending");
-        }else if(Arrays.equals(strArr, descendingArr)){
-            System.out.println("descending");
+        String line = br.readLine();
+        String[] tokens = line.split(" ");
+        int[] arr = new int[8];
+        for (int i = 0; i < 8; i++) {
+            arr[i] = Integer.parseInt(tokens[i]);
         }
-        else{
-            System.out.println("mixed"); }
+
+        boolean ascending = true;
+        boolean descending = true;
+
+        for (int i = 0; i < 7; i++) {
+            if (arr[i] < arr[i + 1]) descending = false;
+            else if (arr[i] > arr[i + 1]) ascending = false;
+        }
+
+        if (ascending) System.out.println("ascending");
+        else if (descending) System.out.println("descending");
+        else System.out.println("mixed");
+
     }
 }
