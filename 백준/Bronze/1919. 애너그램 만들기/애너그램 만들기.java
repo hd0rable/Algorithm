@@ -16,8 +16,8 @@ public class Main {
         }
         int count = 0;
         for(int i=0; i<26; i++){
-            if(arr1[i]!=arr2[i])
-                count+= arr1[i]-arr2[i]>0 ? arr1[i]-arr2[i] : arr2[i]-arr1[i];
+            int compare = arr1[i]-arr2[i];
+            if(compare != 0) count+= Math.abs(compare);
         }
         System.out.println(count);
     }
