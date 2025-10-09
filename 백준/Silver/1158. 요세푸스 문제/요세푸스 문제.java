@@ -9,31 +9,20 @@ public class Main {
         int N = Integer.parseInt(st.nextToken());
         int K = Integer.parseInt(st.nextToken());
 
-        Deque<Integer> left = new ArrayDeque<>();
-        Deque<Integer> right = new ArrayDeque<>();
-
+        Deque<Integer> queue = new ArrayDeque<>();
         for(int i=1; i<=N; i++) {
-            right.addLast(i);
+           queue.add(i);
         }
 
-        int numm = 1;
-        int count = 0;
         StringBuilder sb = new StringBuilder();
         sb.append("<");
-        while(count != N){
-            if(numm>K) numm=1;
-            if(right.isEmpty()){
-                for(int i=0; i< left.size(); i++){
-                    right.addLast(left.removeFirst());
-                }
+        while(!queue.isEmpty()){
+            for(int i=0; i<K-1; i++) {
+                queue.addLast(queue.removeFirst());
             }
-            left.addLast(right.removeFirst());
-            if(numm%K==0) {
-                sb.append(left.removeLast());
-                count++;
-                if(count!=N) sb.append(", ");
-            }
-            numm++;
+            sb.append(queue.removeFirst());
+            if(!queue.isEmpty()) sb.append(", ");
+
         }
         sb.append(">");
         System.out.println(sb);
