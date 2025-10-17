@@ -30,21 +30,11 @@ public class Main {
                 half_idx = deque.size()/2;
             }
 
-            // 중간보다 앞,중간에 있을경우
-            if(pop_idx <= half_idx){
-                // 앞에있는 원소 뒤로 보내기
-                while(deque.peekFirst() != arr[i]){
-                    deque.addLast(deque.removeFirst());
-                    count++;
-                }
-            }
-            // 중간보다 뒤에있을 경우
-            else{
-                // 뒤에있는 원소 앞으로 보내기
-                while(deque.peekFirst() != arr[i]){
-                    deque.addFirst(deque.removeLast());
-                    count++;
-                }
+            while(deque.peekFirst() != arr[i]){
+                // 중간보다 앞,중간에 있을경우 --> 앞에있는 원소 뒤로 보내기
+                if(pop_idx <= half_idx) deque.addLast(deque.removeFirst());
+                else deque.addFirst(deque.removeLast()); // 중간보다 뒤에있을 경우 --> 뒤에있는 원소 앞으로 보내기
+                count++;
             }
             deque.removeFirst();
         }
