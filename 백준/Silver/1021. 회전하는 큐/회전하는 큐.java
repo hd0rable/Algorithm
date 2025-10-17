@@ -10,39 +10,44 @@ public class Main {
         int N = Integer.parseInt(st.nextToken()); //큐의 크기
         int M = Integer.parseInt(st.nextToken()); //뽑아 내려는 수의 개수
 
-        Deque<Integer> deque = new ArrayDeque<>();
+        int[] arr = new int[M];
+        LinkedList<Integer> deque = new LinkedList<>();
         for(int i=1; i<=N; i++){
             deque.addLast(i);
         }
-
-        int min = 0;
         st = new StringTokenizer(br.readLine());
-        for (int i=0; i<M; i++) {
-            int count1 = 0; int count2 = 0;
-            int pop = Integer.parseInt(st.nextToken());
-            boolean isFirst = true;
-
-            Deque<Integer> deque1 = new ArrayDeque<>(deque);
-            Deque<Integer> deque2 = new ArrayDeque<>(deque);
-            while(deque1.peekFirst() != pop) {
-                deque1.addFirst(deque1.removeLast());
-                count1++;
-            }
-            while(deque2.peekFirst() != pop) {
-                deque2.addLast(deque2.removeFirst());
-                count2++;
-                isFirst = false;
-            }
-            min += Math.min(count1, count2);
-            if(isFirst) {
-                deque1.removeFirst();
-                deque = deque1;
-            }
-            else {
-                deque2.removeFirst();
-                deque = deque2;
-            }
+        for(int i=0; i<M; i++){
+            arr[i] = Integer.parseInt(st.nextToken());
         }
-        System.out.println(min);
+
+        int count =0;
+        for (int i=0; i<M; i++) {
+            int pop_idx = deque.indexOf(arr[i]);
+            int half_idx;
+            if(deque.size() % 2 == 0){
+                half_idx = deque.size()/2 - 1;
+            }else{
+                half_idx = deque.size()/2;
+            }
+
+            // 중간보다 앞,중간에 있을경우
+            if(pop_idx <= half_idx){
+                // 앞에있는 원소 뒤로 보내기
+                while(deque.peekFirst() != arr[i]){
+                    deque.addLast(deque.removeFirst());
+                    count++;
+                }
+            }
+            // 중간보다 뒤에있을 경우
+            else{
+                // 뒤에있는 원소 앞으로 보내기
+                while(deque.peekFirst() != arr[i]){
+                    deque.addFirst(deque.removeLast());
+                    count++;
+                }
+            }
+            deque.removeFirst();
+        }
+        System.out.println(count);
     }
 }
