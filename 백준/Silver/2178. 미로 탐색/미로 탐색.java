@@ -15,7 +15,7 @@ public class Main {
         for (int i=0; i<n; i++){
             String line = br.readLine();
             for(int j=0; j<m; j++){
-                arr[i][j] = Integer.parseInt(String.valueOf(line.charAt(j)));
+                arr[i][j] = line.charAt(j) - '0';
             }
         }
 
