@@ -13,7 +13,6 @@ public class Main {
             int k = Integer.parseInt(st.nextToken());
 
             int[][] board = new int[m][n];
-            boolean[][] visited = new boolean[m][n];
             Queue<int[]> q = new LinkedList<>();
             int[] dx = new int[]{1, 0, -1, 0};
             int[] dy = new int[]{0, 1, 0, -1};
@@ -28,18 +27,18 @@ public class Main {
 
             for(int i=0; i<m; i++){
                 for(int j=0; j<n; j++){
-                    if(board[i][j] == 1 && !visited[i][j]){
+                    if(board[i][j] == 1){
                         q.offer(new int[]{i, j});
-                        visited[i][j] = true;
+                        board[i][j] = 0; //방문처리
                         while (!q.isEmpty()) {
                             int[] cur = q.poll();
                             for (int dir = 0; dir < 4; dir++) {
                                 int nx = cur[0] + dx[dir];
                                 int ny = cur[1] + dy[dir];
                                 if (nx < 0 || nx >= m || ny < 0 || ny >= n) continue;
-                                if (visited[nx][ny] || board[nx][ny] == 0) continue;
+                                if (board[nx][ny] == 0) continue;
                                 q.offer(new int[]{nx,ny});
-                                visited[nx][ny] = true;
+                                board[nx][ny] = 0;
                             }
                         }
                         bug++;
