@@ -12,9 +12,10 @@ public class Main {
         int[][][] arr = new int[h][n][m];
         int[][][] dist = new int[h][n][m];
         Queue<Node> q = new LinkedList<>();
-        int[] dx = {1,0,-1,0,0,0};
-        int[] dy = {0,1,0,-1,0,0};
+        int[] dx = {0,0,1,-1,0,0};
+        int[] dy = {1,-1,0,0,0,0};
         int[] dz = {0,0,0,0,1,-1};
+        // 0: 오른쪽, 1: 왼쪽, 2: 아래, 3: 위, 4: 위층, 5: 아래층
 
         for(int i=0; i<h; i++){
             for(int j=0; j<n; j++){
