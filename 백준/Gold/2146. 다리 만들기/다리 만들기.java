@@ -21,6 +21,7 @@ public class Main {
         int[] dx = {1,0,-1,0};
         int[] dy = {0,1,0,-1};
 
+        // 같은섬 라벨링 bfs
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
                 if (visited[i][j] == 1 || arr[i][j] == 0) continue;
@@ -43,14 +44,12 @@ public class Main {
             }
         }
 
+        // 모든 땅에대해 최단거리 bfs
         int[][] dist = new int[n][n];
-//        for(int i = 0; i < n; i++)
-//            Arrays.fill(dist[i],-1);
         Queue<int[]> q2 = new LinkedList<>();
         for(int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
                 if (arr[i][j] != 0) {
-//                    dist[i][j]=0;
                     q2.offer(new int[]{i, j});
                 }
             }
