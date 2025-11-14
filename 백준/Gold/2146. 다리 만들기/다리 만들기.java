@@ -44,13 +44,13 @@ public class Main {
         }
 
         int[][] dist = new int[n][n];
-        for(int i = 0; i < n; i++)
-            Arrays.fill(dist[i],-1);
+//        for(int i = 0; i < n; i++)
+//            Arrays.fill(dist[i],-1);
         Queue<int[]> q2 = new LinkedList<>();
         for(int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
                 if (arr[i][j] != 0) {
-                    dist[i][j]=0;
+//                    dist[i][j]=0;
                     q2.offer(new int[]{i, j});
                 }
             }
