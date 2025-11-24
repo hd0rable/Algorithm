@@ -27,12 +27,11 @@ public class Main {
             return;
         }
         int newSize = size/2;
-        for(int i=0; i<2; i++){
-            if(i==0) sb.append('(');
-            for(int j=0; j<2; j++){
-                func(newSize,row+(i*newSize),col+(j*newSize));
-            }
-        }
+        sb.append('(');
+        func(newSize,row,col); //왼쪽 위
+        func(newSize,row, col+newSize); //오른쪽 위
+        func(newSize,row+newSize,col); //왼쪽 아래
+        func(newSize,row+newSize,col+newSize); //오른쪽 아래
         sb.append(')');
     }
 
