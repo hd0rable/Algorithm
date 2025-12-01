@@ -17,7 +17,7 @@ public class Main {
         for(int i=0; i<n; i++)
             arr[i] = Integer.parseInt(st.nextToken());
         func(0,0);
-        if(s == 0) cnt--;
+        if(s == 0) cnt--; //s가 0일경우 공집합 제외
         System.out.println(cnt);
     }
 
