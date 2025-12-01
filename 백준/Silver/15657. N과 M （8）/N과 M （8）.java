@@ -24,19 +24,16 @@ public class Main {
         System.out.println(sb);
     }
 
-    static void func(int k, int arr_num){
+    static void func(int k, int at){
         if(k == m){
             for(int i=0; i<m; i++)
                 sb.append(arr[i]).append(' ');
             sb.append('\n');
             return;
         }
-        for(int i=0; i<n; i++){
-            if(arr_num <= n_arr[i]) {
-                arr[k] = n_arr[i];
-                func(k + 1, arr[k]);
-            }
+        for(int i=at; i<n; i++){
+            arr[k] = n_arr[i];
+            func(k + 1, i);
         }
-
     }
 }
