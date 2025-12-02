@@ -40,7 +40,7 @@ public class Main {
             if(!isUsed[i]) { //중복 선택안되고
                 isUsed[i] = true;
                 arr[cur] = num[i];
-                func(cur + 1, i);
+                func(cur + 1, i+1);
                 isUsed[i] = false;
             }
         }
