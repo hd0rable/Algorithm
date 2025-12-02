@@ -10,9 +10,12 @@ public class Main {
 
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        StringTokenizer st = new StringTokenizer(br.readLine());
-        k = Integer.parseInt(st.nextToken());
-        while(k!=0){
+        StringTokenizer st;
+        while(true){
+            st = new StringTokenizer(br.readLine());
+            k = Integer.parseInt(st.nextToken());
+            if(k==0) break;
+
             num = new int[k];
             arr = new int[k];
             isUsed = new boolean[k];
@@ -21,9 +24,6 @@ public class Main {
             }
             func(0,0);
             sb.append('\n');
-
-            st = new StringTokenizer(br.readLine());
-            k = Integer.parseInt(st.nextToken());
         }
         System.out.println(sb);
     }
