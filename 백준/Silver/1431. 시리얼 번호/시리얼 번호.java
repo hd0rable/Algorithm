@@ -15,21 +15,20 @@ public class Main {
             if(a1.length() != a2.length())
                 return a1.length() - a2.length();
             // 자리수의 합 오름차순
-            else{
-                int sum1 =0, sum2 =0;
-                for(char c : a1.toCharArray()){
-                    if(c>='0'&& c<='9')
-                        sum1 += c -'0';
-                }
-                for(char c : a2.toCharArray()){
-                    if(c>='0'&& c<='9')
-                        sum2 += c -'0';
-                }
-                if(sum1 != sum2)
-                    return sum1 - sum2;
-                //String의 기본 사전순 정렬
-                else return a1.compareTo(a2);
+            int sum1 =0, sum2 =0;
+            for(char c : a1.toCharArray()){
+                if(c>='0'&& c<='9')
+                    sum1 += c -'0';
             }
+            for(char c : a2.toCharArray()){
+                if(c>='0'&& c<='9')
+                    sum2 += c -'0';
+            }
+            if(sum1 != sum2)
+                return sum1 - sum2;
+
+            //String의 기본 사전순 정렬
+            else return a1.compareTo(a2);
         });
         for(int i=0; i<n; i++) {
             sb.append(arr[i]).append('\n');
