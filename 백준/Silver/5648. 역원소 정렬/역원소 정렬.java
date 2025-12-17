@@ -38,8 +38,7 @@ public class Main {
         long num = arr[index];
         long result = 0;
         while(num!=0){
-            long a = num % 10;
-            result = result*10 + a;
+            result = result*10 + num % 10;
             num/=10;
         }
         arr[index] = result;
