@@ -25,26 +25,22 @@ public class Main {
             for (int i = 0; i < m; i++)
                 listB.add(Integer.parseInt(st.nextToken()));
 
-            Collections.sort(listA); // 1 1 3 7 8
-            Collections.sort(listB); // 1 3 6
+            Collections.sort(listB);
 
             int cnt = 0;
             for(int i=0; i<n; i++) {
-                int num = listA.get(i);
-                int min = listB.get(0);
-                int max = listB.get(listB.size() - 1);
-                if (num <= min) //현재 b보다 작거나 같아서 먹을수있는 먹이가 없음
-                    continue;
-                if (num > max) //b의 최대값보다 현재 a값이 큼
-                    cnt += listB.size(); //b의 있는 모든 값을 먹을수있음
-                else{ //b의 최대값보다는 a값이 작음
-                    cnt ++;
-                    for(int j=1; j<m-1; j++){
-                        if(num > listB.get(j))
-                            cnt++;
-                        else break;
+                int low = 0;
+                int high = m-1;
+                int index = 0;
+                while(low <= high){
+                    int mid = (low + high) /2 ;
+                    if(listB.get(mid) < listA.get(i)){
+                        low = mid + 1;
+                        index = mid + 1;
                     }
+                    else high = mid - 1;
                 }
+                cnt += index;
             }
             sb.append(cnt).append('\n');
         }
