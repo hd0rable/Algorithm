@@ -15,17 +15,17 @@ public class Main {
             int m = Integer.parseInt(st.nextToken());
 
             st = new StringTokenizer(br.readLine());
-            ArrayList<Integer> listA = new ArrayList<>();
-            ArrayList<Integer> listB = new ArrayList<>();
+            int[] arrA = new int[n];
+            int[] arrB = new int[m];
 
             for (int i = 0; i < n; i++)
-                listA.add(Integer.parseInt(st.nextToken()));
+                arrA[i] = Integer.parseInt(st.nextToken());
 
             st = new StringTokenizer(br.readLine());
             for (int i = 0; i < m; i++)
-                listB.add(Integer.parseInt(st.nextToken()));
+                arrB[i] = Integer.parseInt(st.nextToken());
 
-            Collections.sort(listB);
+            Arrays.sort(arrB);
 
             int cnt = 0;
             for(int i=0; i<n; i++) {
@@ -34,7 +34,7 @@ public class Main {
                 int index = 0;
                 while(low <= high){
                     int mid = (low + high) /2 ;
-                    if(listB.get(mid) < listA.get(i)){
+                    if(arrB[mid] < arrA[i]){
                         low = mid + 1;
                         index = mid + 1;
                     }
