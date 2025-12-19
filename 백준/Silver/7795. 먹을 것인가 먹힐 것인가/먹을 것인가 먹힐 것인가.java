@@ -25,23 +25,18 @@ public class Main {
             for (int i = 0; i < m; i++)
                 arrB[i] = Integer.parseInt(st.nextToken());
 
+            Arrays.sort(arrA);
             Arrays.sort(arrB);
 
             int cnt = 0;
             for(int i=0; i<n; i++) {
-                int low = 0;
-                int high = m-1;
-                int index = 0;
-                while(low <= high){
-                    int mid = (low + high) /2 ;
-                    if(arrB[mid] < arrA[i]){
-                        low = mid + 1;
-                        index = mid + 1;
-                    }
-                    else high = mid - 1;
+                for(int j=0; j<m; j++){
+                    if(arrA[i] <= arrB[j])
+                        break;
+                    else cnt++;
                 }
-                cnt += index;
             }
+
             sb.append(cnt).append('\n');
         }
         System.out.println(sb);
