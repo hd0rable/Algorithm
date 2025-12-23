@@ -10,16 +10,14 @@ public class Main {
 
         int n = Integer.parseInt(st.nextToken());
         int m = Integer.parseInt(st.nextToken());
-
-        int[] arr = new int[n];
+        
         st = new StringTokenizer(br.readLine());
-        for(int i=0; i<n; i++)
+
+        int[] arr = new int[n+1];
+        int[] dp = new int[n+1];
+        dp[0] = 0;
+        for(int i=1; i<=n; i++) {
             arr[i] = Integer.parseInt(st.nextToken());
-
-        int[] dp = new int[n];
-
-        dp[0] = arr[0];
-        for(int i=1; i<n; i++){
             dp[i] = dp[i-1] + arr[i];
         }
 
@@ -27,8 +25,7 @@ public class Main {
             st = new StringTokenizer(br.readLine());
             int i = Integer.parseInt(st.nextToken());
             int j = Integer.parseInt(st.nextToken());
-            if(i==1)  sb.append(dp[j-1]).append('\n');
-            else sb.append(dp[j-1]-dp[i-2]).append('\n');
+            sb.append(dp[j]-dp[i-1]).append('\n');
         }
         System.out.println(sb);
     }
