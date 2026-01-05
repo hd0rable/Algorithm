@@ -21,19 +21,21 @@ public class Main {
         Collections.sort(pos,Collections.reverseOrder()); //양수 내림차순 정렬
         Collections.sort(neg); //음수 오름차순 정렬
 
-        Queue<Integer> queue = new ArrayDeque<>();
-        for(int num : pos){
-            if(queue.isEmpty()) queue.add(num); //양수라면 정렬했을때 큰값끼리 묶여서 곱하는게 최대
-            else max += (queue.poll()*num);
+        for (int i = 0; i < pos.size(); i += 2) {
+            if (i + 1 < pos.size()) {
+                max += pos.get(i) * pos.get(i + 1);
+            } else {
+                max += pos.get(i);
+            }
         }
-        if(!queue.isEmpty()) max += queue.poll(); //양수가 홀수일경우 짝이맺어지지못한 양수 처리
 
-        for(int num : neg){
-            if(queue.isEmpty()) queue.add(num);
-            else max += (queue.poll()*num);
-        }
-        if(!queue.isEmpty()) {
-            if(zeroCnt <= 0)  max += queue.poll(); //음수가 홀수일경우 짝이맺어지지못한 음수 처리 0이 있다면 상쇄됨
+        for (int i = 0; i < neg.size(); i += 2) {
+            if (i + 1 < neg.size()) {
+                max += neg.get(i) * neg.get(i + 1);
+            } else {
+                // 남은 음수가 하나일 때 0이 없으면 더하고, 0이 있으면 무시(0과 곱함)
+                if (zeroCnt == 0) max += neg.get(i);
+            }
         }
         System.out.println(max);
     }
