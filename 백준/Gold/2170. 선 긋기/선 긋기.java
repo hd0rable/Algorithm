@@ -25,15 +25,15 @@ public class Main {
 
         for(int i=1; i<n; i++) {
             long[] cur = list.get(i);
-            if (cur[0] > end && cur[1] > end) { //선이 끝날경우 길이 업데이트 후 선분 시작,끝 위치 갱신
+            if (cur[0] <= end) { // 선이 이어지는 경우 (부분 겹침 포함)
+                end = Math.max(end, cur[1]);
+            } else { // 선이 완전히 끊긴 경우
                 sum += (end - start);
                 start = cur[0];
                 end = cur[1];
-            } else if (cur[0] >= start && cur[1] <= end)
-                continue; //선이 겹치는경우
-            else if (cur[0] >= start && cur[1] > end)
-                end = cur[1]; //현재 선이 더 나중에 끝날경우 길이 갱신
+            }
         }
         System.out.println(sum + end - start);
     }
+
 }
