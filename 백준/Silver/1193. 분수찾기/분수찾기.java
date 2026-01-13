@@ -1,3 +1,4 @@
+//https://www.acmicpc.net/problem/1193
 import java.io.*;
 import java.util.*;
 
@@ -12,21 +13,23 @@ public class Main {
         while(true){
             if(x <= count + line){
                 int pos = x - count; //라인 내에서 순서
-                int n = line - pos + 1;
-                if(line % 2 ==0){
-                    System.out.print(pos);
-                    System.out.print('/');
-                    System.out.print(n);
+                int n = line - pos + 1; //짝이되는 수
 
-                }else{
-                    System.out.print(n);
-                    System.out.print('/');
-                    System.out.print(pos);
+                StringBuilder sb = new StringBuilder();
+                if (line % 2 == 0) {
+                    // 짝수 라인: 위에서 아래로 (pos/n)
+                    sb.append(pos).append('/').append(n);
+                } else {
+                    // 홀수 라인: 아래에서 위로 (n/pos)
+                    sb.append(n).append('/').append(pos);
                 }
+                System.out.println(sb);
                 break;
             }
             count += line;
             line++;
         }
+
+
     }
 }
