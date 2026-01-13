@@ -10,10 +10,11 @@ jobs:
     permissions:
       contents: write
     steps:
-      - uses: choam2426/AI-Algorithm-Mentor@v5
+      - name: call AI Algorithm Mentor
+        uses: choam2426/AI-Algorithm-Mentor@feature/#8
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          LLM_PROVIDER: google              # openai, google, anthropic
-          MODEL_NAME: gemini-2.5-flash  # 모델명 (선택사항)
+          LLM_PROVIDER: google
+          MODEL_NAME: gemini-2.5-flash
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
-          REVIEW_LANGUAGE: korean           # korean, english, etc..
+          REVIEW_LANGUAGE: korean
