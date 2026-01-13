@@ -2,7 +2,7 @@ name: 🤖 AI Algorithm Mentor
 
 on:
   push:
-    branches: [ main, master ]
+    branches: [ main ]
 
 jobs:
   ai-review:
@@ -10,8 +10,7 @@ jobs:
     permissions:
       contents: write
     steps:
-      - name: call AI Algorithm Mentor
-        uses: choam2426/AI-Algorithm-Mentor@feature/#8
+      - uses: choam2426/AI-Algorithm-Mentor@v5
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           LLM_PROVIDER: google
