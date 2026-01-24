@@ -1,4 +1,4 @@
-//https://www.acmicpc.net/short/status/18870
+//https://www.acmicpc.net/problem/18870
 import java.io.*;
 import java.util.*;
 
@@ -25,5 +25,6 @@ public class Main {
         }
         System.out.println(sb);
     }
+
 
 }
