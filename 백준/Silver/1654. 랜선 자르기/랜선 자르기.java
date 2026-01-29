@@ -1,4 +1,3 @@
-//https://www.acmicpc.net/problem/1654
 import java.io.*;
 import java.util.*;
 
@@ -16,9 +15,7 @@ public class Main {
         arr = new int[k];
         for(int i=0; i<k; i++)
             arr[i] = Integer.parseInt(br.readLine());
-
-        Arrays.sort(arr);
-
+        
         long start = 1;
         long end = Integer.MAX_VALUE; //0x7fffffff
         while(start < end){
