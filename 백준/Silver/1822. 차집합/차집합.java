@@ -11,34 +11,20 @@ public class Main {
         int nA = Integer.parseInt(st.nextToken());
         int nB = Integer.parseInt(st.nextToken());
 
-        long[] a = new long[nA];
-        long[] b = new long[nB];
-
+        TreeSet<Integer> aSet = new TreeSet<>();
         st = new StringTokenizer(br.readLine());
         for(int i=0; i<nA; i++)
-            a[i] = Long.parseLong(st.nextToken());
+            aSet.add(Integer.parseInt(st.nextToken()));
 
         st = new StringTokenizer(br.readLine());
-        for(int i=0; i<nB; i++)
-            b[i] = Long.parseLong(st.nextToken());
-
-
-        Arrays.sort(b);
-        int cnt = nA;
-        for(int i=0; i<nA; i++){
-            int num = Arrays.binarySearch(b,a[i]);
-            if(num>=0){
-                cnt--;
-                a[i] = -1;
-            }
+        for(int i=0; i<nB; i++) {
+            int num = Integer.parseInt(st.nextToken());
+            aSet.remove(num);
         }
 
-        Arrays.sort(a);
-
-        sb.append(cnt).append('\n');
-        for(int i=0; i<nA; i++) {
-            if(a[i] == -1) continue;
-            sb.append(a[i]).append(' ');
+        sb.append(aSet.size()).append('\n');
+        for(int num : aSet){
+            sb.append(num).append(' ');
         }
         System.out.println(sb);
     }
