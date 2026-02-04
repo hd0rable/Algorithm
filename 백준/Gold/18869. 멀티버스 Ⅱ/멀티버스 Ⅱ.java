@@ -1,4 +1,3 @@
-//https://www.acmicpc.net/problem/18869
 import java.io.*;
 import java.util.*;
 
@@ -10,28 +9,32 @@ public class Main {
         int m = Integer.parseInt(st.nextToken());
         int n = Integer.parseInt(st.nextToken());
 
-       int[][] sortedArray = new int[m][n];
-       int[][] originalArray = new int[m][n];
-       int[][] indexes = new int[m][n];
-       for(int i=0; i<m; i++){
-           st = new StringTokenizer(br.readLine());
-           for(int j=0; j<n; j++){
-               int num = Integer.parseInt(st.nextToken());
-               originalArray[i][j] = sortedArray[i][j] = num;
-           }
-           Arrays.sort(sortedArray[i]);
+        int[][] arr = new int[m][n];
+        List<Integer>[] sortedArray = new ArrayList[m];
+
+        for(int i=0; i<m; i++){
+            st = new StringTokenizer(br.readLine());
+            Set<Integer> set = new HashSet<>();
+
+            for(int j=0; j<n; j++){
+                int num = Integer.parseInt(st.nextToken());
+                arr[i][j] = num;
+                set.add(num);
+            }
+
+            sortedArray[i] = new ArrayList<>(set);
+            Collections.sort(sortedArray[i]);
        }
         for(int i=0; i<m; i++){
             for(int j=0; j<n; j++){
-                indexes[i][j] =
-                        Arrays.binarySearch(sortedArray[i],originalArray[i][j]);
+                arr[i][j] = Collections.binarySearch(sortedArray[i],arr[i][j]);
             }
         }
 
        int cnt =0;
        for(int i=0; i<m; i++){
            for(int j=i+1; j<m; j++){
-               if(Arrays.equals(indexes[i],indexes[j])) cnt++;
+               if(Arrays.equals(arr[i],arr[j])) cnt++;
            }
        }
         System.out.println(cnt);
