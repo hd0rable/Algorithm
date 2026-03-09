@@ -1,3 +1,4 @@
+//https://www.acmicpc.net/problem/1202
 import java.io.*;
 import java.util.*;
 class Jewelry implements Comparable<Jewelry>{
