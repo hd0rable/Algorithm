@@ -2,7 +2,8 @@ import java.util.*;
 import java.io.*;
 class Solution {
     public int solution(int[][] maps) {
-        int n = maps.length , m = maps[0].length;
+        int n = maps.length;
+int m = maps[0].length;
         int[] dx = new int[]{-1,1,0,0}; //상하좌우
         int[] dy = new int[]{0,0,-1,1};
         int[][] dist = new int[n][m];
@@ -26,7 +27,7 @@ class Solution {
                 if(dist[nx][ny]!=0 || maps[nx][ny] == 0) continue;
                 
                 queue.offer(new int[]{nx,ny});
-                dist[nx][ny] += dist[x][y] + 1;
+                dist[nx][ny] = dist[x][y] + 1;
             }
         }
         
