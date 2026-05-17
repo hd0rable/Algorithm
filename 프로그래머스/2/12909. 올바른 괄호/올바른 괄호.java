@@ -1,16 +1,10 @@
-import java.util.*;
 class Solution {
     boolean solution(String s) {
-        String[] st = s.split("");
-        Deque<String> stack = new ArrayDeque<>();
-        for(String string : st){
-            if(string.equals("("))
-                stack.push(string);
-            else if(!stack.isEmpty() && stack.peek().equals("(") && string.equals(")"))
-                stack.pop();
-            else return false;
-        }
-        if(!stack.isEmpty()) return false;
-        return true;
+        boolean answer = true;
+
+        // [실행] 버튼을 누르면 출력 값을 볼 수 있습니다.
+        System.out.println("Hello Java");
+
+        return answer;
     }
 }
